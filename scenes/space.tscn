@@ -1,0 +1,187 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://images/uzaydan_türkiye.jpg" type="Texture" id=1]
+[ext_resource path="res://scenes/spawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/space.gd" type="Script" id=3]
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sounds/music1.wav" type="AudioStream" id=5]
+[ext_resource path="res://scenes/mainMenu.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/dead.tscn" type="PackedScene" id=7]
+
+[sub_resource type="SegmentShape2D" id=1]
+a = Vector2( -296, 0 )
+b = Vector2( 256, 0 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 280, 8 )
+
+[sub_resource type="SegmentShape2D" id=3]
+a = Vector2( 72, -248 )
+b = Vector2( 72, 720 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 328, 8 )
+
+[sub_resource type="SegmentShape2D" id=5]
+a = Vector2( -160, 0 )
+b = Vector2( 328, 0 )
+
+[sub_resource type="SegmentShape2D" id=6]
+a = Vector2( 296, 8 )
+b = Vector2( -192, 8 )
+
+[sub_resource type="SegmentShape2D" id=7]
+a = Vector2( -248, 0 )
+b = Vector2( 240, 0 )
+
+[node name="space" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = -176.0
+margin_right = 2424.0
+margin_bottom = 2000.0
+rect_scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 256, 608 )
+
+[node name="Area2D" type="Area2D" parent="player"]
+collision_mask = 1032
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="player/Area2D"]
+polygon = PoolVector2Array( 0, -21.3333, -16, 0, 0, 21.3333, 16, 0 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="regFireTimer" type="Timer" parent="."]
+wait_time = 0.01
+autostart = true
+
+[node name="singFireTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="clearBulletAndEnemy" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 72
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="clearBulletAndEnemy"]
+position = Vector2( 248, 704 )
+shape = SubResource( 1 )
+
+[node name="clearBullet" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="clearBullet"]
+position = Vector2( 232, -272 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="clearBullet"]
+position = Vector2( 440, -16 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="clearBullet"]
+position = Vector2( -120, -16 )
+shape = SubResource( 3 )
+
+[node name="changes" type="Node2D" parent="."]
+
+[node name="change15" type="Area2D" parent="changes"]
+collision_layer = 32
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="changes/change15"]
+position = Vector2( 320, 0 )
+shape = SubResource( 4 )
+
+[node name="change50" type="Area2D" parent="changes"]
+collision_layer = 32
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="changes/change50"]
+position = Vector2( 168, 128 )
+shape = SubResource( 5 )
+
+[node name="change75" type="Area2D" parent="changes"]
+collision_layer = 32
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="changes/change75"]
+position = Vector2( 200, 272 )
+shape = SubResource( 6 )
+
+[node name="change90" type="Area2D" parent="changes"]
+collision_layer = 32
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="changes/change90"]
+position = Vector2( 256, 424 )
+shape = SubResource( 7 )
+
+[node name="spawner" parent="." groups=[
+"spawner",
+] instance=ExtResource( 2 )]
+position = Vector2( 64, -192 )
+
+[node name="spawner2" parent="." groups=[
+"spawner",
+] instance=ExtResource( 2 )]
+position = Vector2( 128, -192 )
+
+[node name="spawner3" parent="." groups=[
+"spawner",
+] instance=ExtResource( 2 )]
+position = Vector2( 192, -192 )
+
+[node name="spawner4" parent="." groups=[
+"spawner",
+] instance=ExtResource( 2 )]
+position = Vector2( 256, -192 )
+
+[node name="spawner5" parent="." groups=[
+"spawner",
+] instance=ExtResource( 2 )]
+position = Vector2( 320, -192 )
+
+[node name="spawner6" parent="." groups=[
+"spawner",
+] instance=ExtResource( 2 )]
+position = Vector2( 384, -192 )
+
+[node name="spawner7" parent="." groups=[
+"spawner",
+] instance=ExtResource( 2 )]
+position = Vector2( 448, -192 )
+
+[node name="mainMenu" parent="." instance=ExtResource( 6 )]
+visible = false
+margin_left = 197.0
+margin_top = 229.0
+margin_right = 453.0
+margin_bottom = 421.0
+
+[node name="dead" parent="." instance=ExtResource( 7 )]
+visible = false
+margin_right = 0.0
+margin_bottom = 0.0
+[connection signal="finished" from="music" to="." method="_on_music_finished"]
+[connection signal="body_entered" from="player/Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="regFireTimer" to="." method="_on_regFireTimer_timeout"]
+[connection signal="timeout" from="singFireTimer" to="." method="_on_singFireTimer_timeout"]
+[connection signal="body_entered" from="clearBulletAndEnemy" to="." method="_on_clearBulletAndEnemy_body_entered"]
+[connection signal="body_entered" from="clearBullet" to="." method="_on_clearBullet_body_entered"]
+[connection signal="body_entered" from="changes/change15" to="." method="_on_change15_body_entered"]
+[connection signal="body_entered" from="changes/change50" to="." method="_on_change50_body_entered"]
+[connection signal="body_entered" from="changes/change75" to="." method="_on_change75_body_entered"]
+[connection signal="body_entered" from="changes/change90" to="." method="_on_change90_body_entered"]

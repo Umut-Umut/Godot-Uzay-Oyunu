@@ -1,0 +1,7 @@
+Godot Engine v3.2.3.stable.official - https://godotengine.org
+OpenGL ES 3.0 Renderer: Intel(R) HD Graphics 4000
+ 
+Scanning projects at: C:/Users/Umut/Desktop/Yazilim/Godot
+Found 3 projects.
+**ERROR**: Condition "default_certs != __null" is true.
+   At: modules/mbedtls/crypto_mbedtls.cpp:201:load_default_certificates() - Condition "default_certs != __null" is true.

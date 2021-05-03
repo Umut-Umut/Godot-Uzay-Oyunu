@@ -1,0 +1,83 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://fonts/hud.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scripts/dead.gd" type="Script" id=2]
+
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://fonts/Tigerious-ywyKe.otf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = SubResource( 1 )
+
+[node name="dead" type="Control"]
+anchor_right = 0.997
+anchor_bottom = 0.985
+margin_right = -0.0500488
+margin_bottom = -0.250061
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="score" type="Label" parent="."]
+margin_left = 191.0
+margin_top = 315.0
+margin_right = 447.0
+margin_bottom = 379.0
+custom_fonts/font = ExtResource( 1 )
+text = "Your Score: 100"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 128.0
+margin_top = 128.0
+margin_right = 512.0
+margin_bottom = 192.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.501961, 0.0117647, 0, 1 )
+text = "Game Over!!!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="."]
+margin_left = 255.0
+margin_top = 227.0
+margin_right = 383.0
+margin_bottom = 291.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+custom_fonts/font = ExtResource( 1 )
+enabled_focus_mode = 0
+text = "Main Menu"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_left = 255.0
+margin_top = 187.0
+margin_right = 383.0
+margin_bottom = 251.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+custom_fonts/font = ExtResource( 1 )
+text = "Restart"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+[connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
